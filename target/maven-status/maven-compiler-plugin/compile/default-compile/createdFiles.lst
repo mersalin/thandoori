@@ -1,0 +1,9 @@
+com\tastydine\WebInitializer.class
+com\tastydine\OAuth2ServerConfiguration$AuthorizationServerConfiguration.class
+com\tastydine\WebSecurityConfiguration.class
+com\tastydine\OAuth2ServerConfiguration$ResourceServerConfiguration.class
+com\tastydine\Application.class
+com\tastydine\service\Service.class
+com\tastydine\OAuth2ServerConfiguration.class
+com\tastydine\model\MyModel.class
+com\tastydine\controller\Controller.class
