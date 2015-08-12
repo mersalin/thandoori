@@ -4,12 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tastydine.dao.login.LoginDAO;
+import com.tastydine.dao.login.UserDAO;
 import com.tastydine.vo.Login;
+import com.tastydine.vo.User;
 
 @Service
 public class LoginService {
 	@Autowired
-	private LoginDAO loginTemplate;
+	private LoginDAO loginDao;
+	
+	@Autowired
+	private UserDAO userDao;
 	
 /*	public boolean validateUser(String userName, String password) {
 		Login login = loginTemplate.getLoginDetails(userName);
@@ -29,13 +34,16 @@ public class LoginService {
 	 * @return
 	 */
 	public Login validateUser(String userName, String password) {
-		Login login = loginTemplate.getLoginDetails(userName);
-		if(login==null) {
-			login = new Login();
+//		Login login = loginDao.getLoginDetails(userName);
+		User user = userDao.getByName(userName);
+		Login login = new Login();
+		if(user==null) {
+//			login = new Login();
 			login.setUserName(userName);//setting this from input as this would be null from DB
 			login.setStatusMessage("Username/password invalid");
 			login.setStatusCode(404);
-		} else if(password.equals(login.getPassword())){
+		} else if(password.equals(user.getPassword())){
+			login.setUserName(user.getUserName());
 			login.setStatusCode(200);
 			login.setStatusMessage("Success");
 		} else {

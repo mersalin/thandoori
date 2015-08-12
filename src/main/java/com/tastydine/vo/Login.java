@@ -1,4 +1,5 @@
 package com.tastydine.vo;
+
 public class Login {
 	private int id;
 	private String userName;
@@ -38,4 +39,3 @@ public class Login {
 	}
 
 }
-
